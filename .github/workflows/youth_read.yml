@@ -22,6 +22,8 @@ jobs:
       YOUTH_READ6: ${{ secrets.YOUTH_READ122 }}
       YOUTH_READ7: ${{ secrets.YOUTH_READ121 }}
       YOUTH_READ8: ${{ secrets.YOUTH_READ122 }}
+      YOUTH_READ9: ${{ secrets.YOUTH_READ121 }}
+      YOUTH_READ10: ${{ secrets.YOUTH_READ122 }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 12.x
@@ -87,3 +89,18 @@ jobs:
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ122 }}
+          
+      - name: '运行 【中青看点自动阅读九】'
+        if: env.YOUTH_READ9
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ121 }}
+          
+      - name: '运行 【中青看点自动阅读十】'
+        if: env.YOUTH_READ10
+        run: |
+          node Task/Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ122 }}
+          
